@@ -1,18 +1,18 @@
 # read the context of text file f, defined in with function
 def get_book_text(f):
-       	file_contents = f.read()
-       	return file_contents
+    file_contents = f.read()
+    return file_contents
 
 # process the contents of the book text
 def get_num_words():
-       	# get the contents from the  get_book_text function
-       	contents = get_book_text(f)
-       	# split the contents string into a list
-       	words = contents.split()
-       	# find the length of the list
-       	num_words = len(words)
-       	# print the output as a f-string
-       	print(f"{num_words} words found in the document")
+    # get the contents from the  get_book_text function
+    contents = get_book_text(f)
+    # split the contents string into a list
+    words = contents.split()
+    # find the length of the list
+    num_words = len(words)
+    # print the output as a f-string
+    print(f"{num_words} words found in the document")
 
 # get character count
 def get_num_characters():
