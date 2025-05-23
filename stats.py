@@ -12,27 +12,50 @@ def get_num_words():
     # find the length of the list
     num_words = len(words)
     # print the output as a f-string
-    print(f"{num_words} words found in the document")
+    print(f"Found {num_words} total words")
+
+# define how to sort list of dictionaries created in next function
+def sort_on(dict):
+	return dict["num"]
 
 # get character count
 def get_num_characters():
+	print("--------- Character Count -------")
 	# set blank dictionary
 	character_dict = {}
+	# set blank list
+	char_num = []
 	# call get_book_text funtion
 	contents = get_book_text(f)
 	# convert contents to lowercase
 	low_string = contents.lower()
+	# count how many times a character occurs
 	for chara in low_string:
 		if chara in character_dict:
 			character_dict[chara] += 1
 		else:
 			character_dict[chara] = 1
-	return print(character_dict)
+	#return print(character_dict)
+	# convert dictionary to dictionaries
+	for char, num in character_dict.items():
+		char_num_dicts = { 
+			"char" : char ,
+			"num" : num
+			}
+		# add dictionary to list only if the character is alphanumeric
+		if char.isalpha():
+			char_num.append(char_num_dicts)
+			#print(char_num)
+	# sort the dictionaries by number value in decending order (reverse=True)
+	char_num.sort(reverse=True, key=sort_on)
+	for value in char_num:
+		char_value = value["char"]
+		num_value = value["num"]
+		print(f"{char_value}: {num_value}")
 
-# open the file using a relative path and get word count
+# open the file using a relative path and get word count/character count
 with open("books/frankenstein.txt") as f:
-       	get_num_words()
+    get_num_words()
 
 with open("books/frankenstein.txt") as f:
 	get_num_characters()
-
