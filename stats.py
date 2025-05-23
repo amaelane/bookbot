@@ -1,3 +1,5 @@
+import sys
+
 # read the context of text file f, defined in with function
 def get_book_text(f):
     file_contents = f.read()
@@ -54,8 +56,8 @@ def get_num_characters():
 		print(f"{char_value}: {num_value}")
 
 # open the file using a relative path and get word count/character count
-with open("books/frankenstein.txt") as f:
+with open(sys.argv[1]) as f:
     get_num_words()
 
-with open("books/frankenstein.txt") as f:
+with open(sys.argv[1]) as f:
 	get_num_characters()
